@@ -147,10 +147,8 @@
     font-weight: 600;
   }
 
-  /* MOBILE NAVIGATION WRAPPER */
   .mobile-nav-wrapper { display: none; }
 
-  /* CONTENT WRAPPER */
   .content-area {
     margin-left: 260px;
     flex: 1;
@@ -158,7 +156,6 @@
     max-width: 1200px;
   }
 
-  /* TOP HEADER BAR */
   .top-bar {
     display: flex;
     justify-content: space-between;
@@ -170,7 +167,7 @@
   .page-title h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
   .page-title p { margin: 2px 0 0; font-size: 12px; color: var(--text-muted); }
 
-  .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .actions button {
     background: var(--card-bg);
     color: var(--text-main);
@@ -198,7 +195,14 @@
     color: #fff !important;
   }
 
-  /* OVERVIEW WIDGET */
+  #sync-status {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
   .overview-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -223,7 +227,6 @@
     border-radius: 20px;
   }
 
-  /* ITINERARY CARD FEED */
   #export-area { background: transparent; }
   
   details.day {
@@ -347,7 +350,6 @@
   }
   .add-row:hover { border-color: var(--accent-red); color: var(--accent-red); background: var(--accent-soft); }
 
-  /* CONTACT CARD STYLES */
   details.contact-section-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -393,12 +395,7 @@
     outline: none;
     color: var(--text-main);
   }
-  .acc-trans-select:focus, .acc-trans-date:focus, .acc-trans-input:focus {
-    border-color: var(--accent-red);
-    background: #fff;
-  }
 
-  /* VIEW-ONLY MODE OVERRIDES */
   body.view-only .editable,
   body.view-only .acc-trans-select,
   body.view-only .acc-trans-date,
@@ -413,11 +410,11 @@
   body.view-only .del-row,
   body.view-only .loc-map-input,
   body.view-only .btn-save,
-  body.view-only .btn-reset {
+  body.view-only .btn-reset,
+  body.view-only #sync-status {
     display: none !important;
   }
 
-  /* RESPONSIVE MOBILE STYLING */
   @media(max-width: 768px) {
     aside { display: none; }
     .content-area { margin-left: 0; padding: 15px 12px; }
@@ -487,7 +484,6 @@
 <div id="main-wrapper">
   <div class="dashboard-container">
     
-    <!-- DESKTOP SIDEBAR -->
     <aside>
       <div class="user-profile-card">
         <div class="avatar">FA</div>
@@ -507,7 +503,6 @@
 
     <div class="content-area">
       
-      <!-- MOBILE NAVIGATION BAR -->
       <div class="mobile-nav-wrapper">
         <div class="user-profile-card">
           <div class="avatar">FA</div>
@@ -524,7 +519,6 @@
         </div>
       </div>
 
-      <!-- ITINERARY TAB -->
       <div id="view-itinerary" class="tab-content">
         <div class="top-bar">
           <div class="page-title">
@@ -533,6 +527,7 @@
           </div>
           <div class="actions">
             <button class="btn-save" onclick="saveAllData()">💾 Simpan</button>
+            <span id="sync-status">Siap</span>
             <button class="btn-reset" onclick="resetAllData()" style="color:#d94e3d; border-color:#f2d7d5;">🔄 Reset</button>
             <button onclick="exportImage()">📷 Gambar</button>
             <button onclick="exportPDF()">📄 PDF</button>
@@ -554,7 +549,6 @@
         <div id="export-area">
           <main id="itinerary-main-container">
             
-            <!-- HARI 1: Rabu, 16 Des 2026 -->
             <details class="day" open>
             <summary>Rabu, 16 Des 2026 <span class="tag">-</span></summary>
             <div class="table-responsive">
@@ -571,7 +565,6 @@
             <button class="add-row" onclick="addRow('d1216')">+ Tambah Baris</button>
             </details>
 
-            <!-- HARI 2: Kamis, 17 Des 2026 -->
             <details class="day">
             <summary>Kamis, 17 Des 2026 <span class="tag">-</span></summary>
             <div class="table-responsive">
@@ -579,270 +572,11 @@
               <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
               <tbody id="tbody-d1217">
               <tr><td class="time"><span class="editable" contenteditable="true">09.00–10.00</span></td><td class="region"><span class="editable" contenteditable="true">Abiansemal</span></td><td class="location"><span class="editable" contenteditable="true">Sangeh</span></td><td class="activity"><span class="editable" contenteditable="true">Sarapan di Lawar Kuwir Men Sono</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Rp20rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1217')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">11.00–13.00</span></td><td class="region"><span class="editable" contenteditable="true">Abiansemal</span></td><td class="location"><span class="editable" contenteditable="true">Sangeh</span></td><td class="activity"><span class="editable" contenteditable="true">Sangeh Forest Monkey</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Rp30rb tiket masuk</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1217')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">14.00–15.30</span></td><td class="region"><span class="editable" contenteditable="true">Ubud</span></td><td class="location"><span class="editable" contenteditable="true">Ubud</span></td><td class="activity"><span class="editable" contenteditable="true">Tibumana Waterfall</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Rp20rb tiket masuk</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1217')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">18.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">Kembali ke Narayuka House</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa (~40 km)</span></td><td class="price"><span class="editable" contenteditable="true">–</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1217')">×</button></td></tr>
               </tbody>
               <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1217" class="total-value">Rp0</td><td></td></tr></tfoot>
               </table>
             </div>
             <button class="add-row" onclick="addRow('d1217')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 3: Jumat, 18 Des 2026 -->
-            <details class="day">
-            <summary>Jumat, 18 Des 2026 <span class="tag">-</span></summary>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1218">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1218">
-              <tr><td class="time"><span class="editable" contenteditable="true">08.00–12.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta Utara</span></td><td class="location"><span class="editable" contenteditable="true">Canggu</span></td><td class="activity"><span class="editable" contenteditable="true">Analog Canggu</span></td><td class="transport"><span class="editable" contenteditable="true">Jalan kaki/motor</span></td><td class="price"><span class="editable" contenteditable="true">Harga menu cafe</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1218')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">12.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">Kembali ke Narayuka House</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">–</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1218')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">14.30–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">Little Langkah</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Harga menu cafe</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1218')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">17.00–19.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">Petitenget Beach</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Gratis</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1218')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1218" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1218')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 4: Sabtu, 19 Des 2026 -->
-            <details class="day">
-            <summary>Sabtu, 19 Des 2026 <span class="tag">-</span></summary>
-            <div class="day-note">Bawa baju ganti untuk Tegenungan.</div>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1219">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1219">
-              <tr><td class="time"><span class="editable" contenteditable="true">08.00–09.00</span></td><td class="region"><span class="editable" contenteditable="true">Sukawati</span></td><td class="location"><span class="editable" contenteditable="true">Gianyar</span></td><td class="activity"><span class="editable" contenteditable="true">Tegenungan Waterfall & jembatan kaca</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Rp35rb (bensin+tiket)</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1219')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">11.00–12.30</span></td><td class="region"><span class="editable" contenteditable="true">Tegallalang</span></td><td class="location"><span class="editable" contenteditable="true">Ubud</span></td><td class="activity"><span class="editable" contenteditable="true">Tegalalang Rice Terrace (viewpoint)</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Rp10rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1219')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">15.00–16.30</span></td><td class="region"><span class="editable" contenteditable="true">Ubud</span></td><td class="location"><span class="editable" contenteditable="true">Ubud</span></td><td class="activity"><span class="editable" contenteditable="true">Campuhan Ridge Walk</span></td><td class="transport"><span class="editable" contenteditable="true">Jalan kaki</span></td><td class="price"><span class="editable" contenteditable="true">Gratis</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1219')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1219" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1219')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 5: Minggu, 20 Des 2026 -->
-            <details class="day">
-            <summary>Minggu, 20 Des 2026 <span class="tag">-</span></summary>
-            <div class="day-note">Jatiluwih tiket murah dan tanpa jasa guide wajib.</div>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1220">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1220">
-              <tr><td class="time"><span class="editable" contenteditable="true">8.00–9.30</span></td><td class="region"><span class="editable" contenteditable="true">Penebel</span></td><td class="location"><span class="editable" contenteditable="true">Tabanan</span></td><td class="activity"><span class="editable" contenteditable="true">Berangkat ke Jatiluwih Rice Terraces</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Bensin Rp20rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1220')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">9.30–12.00</span></td><td class="region"><span class="editable" contenteditable="true">Penebel</span></td><td class="location"><span class="editable" contenteditable="true">Tabanan</span></td><td class="activity"><span class="editable" contenteditable="true">Jatiluwih Rice Terraces (UNESCO)</span></td><td class="transport"><span class="editable" contenteditable="true">–</span></td><td class="price"><span class="editable" contenteditable="true">Rp40rb/orang</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1220')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">Kembali ke Narayuka House</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">–</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1220')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1220" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1220')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 6: Senin, 21 Des 2026 -->
-            <details class="day">
-            <summary>Senin, 21 Des 2026 <span class="tag">-</span></summary>
-            <div class="day-note">WFA dari Narayuka House, sore ke Sanur.</div>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1221">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1221">
-              <tr><td class="time"><span class="editable" contenteditable="true">9.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">WFA dari kamar Narayuka House</span></td><td class="transport"><span class="editable" contenteditable="true">–</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1221')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">17.00–18.30</span></td><td class="region"><span class="editable" contenteditable="true">Denpasar Selatan</span></td><td class="location"><span class="editable" contenteditable="true">Sanur</span></td><td class="activity"><span class="editable" contenteditable="true">Jalan sore di Sanur Beach Promenade</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Rp10rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1221')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1221" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1221')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 7: Selasa, 22 Des 2026 -->
-            <details class="day">
-            <summary>Selasa, 22 Des 2026 <span class="tag">-</span></summary>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1222">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1222">
-              <tr><td class="time"><span class="editable" contenteditable="true">9.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">WFA dari Narayuka House</span></td><td class="transport"><span class="editable" contenteditable="true">–</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1222')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">17.00–18.30</span></td><td class="region"><span class="editable" contenteditable="true">Kuta Selatan</span></td><td class="location"><span class="editable" contenteditable="true">Uluwatu</span></td><td class="activity"><span class="editable" contenteditable="true">Sunset di Sunset Point Uluwatu</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Bensin Rp20rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1222')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1222" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1222')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 8: Rabu, 23 Des 2026 -->
-            <details class="day">
-            <summary>Rabu, 23 Des 2026 <span class="tag">-</span></summary>
-            <div class="day-note">Pindah penginapan ke Alea Hotel Seminyak.</div>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1223">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1223">
-              <tr><td class="time"><span class="editable" contenteditable="true">12.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">Check out Narayuka, check in Alea Hotel Seminyak</span></td><td class="transport"><span class="editable" contenteditable="true">Jalan kaki/motor</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1223')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">17.30–19.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta Utara</span></td><td class="location"><span class="editable" contenteditable="true">Batu Belig</span></td><td class="activity"><span class="editable" contenteditable="true">Sunset di Batu Belig Beach</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Gratis</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1223')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1223" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1223')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 9: Kamis, 24 Des 2026 -->
-            <details class="day">
-            <summary>Kamis, 24 Des 2026 <span class="tag">-</span></summary>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1224">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1224">
-              <tr><td class="time"><span class="editable" contenteditable="true">9.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">WFA dari Alea Hotel Seminyak</span></td><td class="transport"><span class="editable" contenteditable="true">–</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1224')">×</button></td></tr>
-              <tr><td class="time"><span class="editable" contenteditable="true">17.45–19.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta Selatan</span></td><td class="location"><span class="editable" contenteditable="true">Ungasan</span></td><td class="activity"><span class="editable" contenteditable="true">Green Bowl Beach</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Rp10rb (parkir)</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1224')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1224" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1224')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 10: Jumat, 25 Des 2026 -->
-            <details class="day">
-            <summary>Jumat, 25 Des 2026 <span class="tag">-</span></summary>
-            <div class="day-note">Libur Natal – eksplorasi seharian penuh.</div>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1225">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1225">
-              <tr><td class="time"><span class="editable" contenteditable="true">11.15–14.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta Selatan</span></td><td class="location"><span class="editable" contenteditable="true">Uluwatu</span></td><td class="activity"><span class="editable" contenteditable="true">Melasti Beach</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Rp15rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1225')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1225" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1225')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 11: Sabtu, 26 Des 2026 -->
-            <details class="day">
-            <summary>Sabtu, 26 Des 2026 <span class="tag">-</span></summary>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1226">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1226">
-              <tr><td class="time"><span class="editable" contenteditable="true">9.30–11.00</span></td><td class="region"><span class="editable" contenteditable="true">Gianyar</span></td><td class="location"><span class="editable" contenteditable="true">Bangli</span></td><td class="activity"><span class="editable" contenteditable="true">Goa Rang Reng</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Rp20rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1226')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1226" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1226')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 12: Minggu, 27 Des 2026 -->
-            <details class="day">
-            <summary>Minggu, 27 Des 2026 <span class="tag">-</span></summary>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1227">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1227">
-              <tr><td class="time"><span class="editable" contenteditable="true">8.15–9.30</span></td><td class="region"><span class="editable" contenteditable="true">Ubud</span></td><td class="location"><span class="editable" contenteditable="true">Ubud</span></td><td class="activity"><span class="editable" contenteditable="true">Campuhan Ridge Walk</span></td><td class="transport"><span class="editable" contenteditable="true">Jalan kaki</span></td><td class="price"><span class="editable" contenteditable="true">Gratis</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1227')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1227" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1227')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 13: Senin, 28 Des 2026 -->
-            <details class="day">
-            <summary>Senin, 28 Des 2026 <span class="tag">-</span></summary>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1228">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1228">
-              <tr><td class="time"><span class="editable" contenteditable="true">9.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">WFA dari Alea Hotel Seminyak</span></td><td class="transport"><span class="editable" contenteditable="true">–</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1228')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1228" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1228')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 14: Selasa, 29 Des 2026 -->
-            <details class="day">
-            <summary>Selasa, 29 Des 2026 <span class="tag">-</span></summary>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1229">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1229">
-              <tr><td class="time"><span class="editable" contenteditable="true">9.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">WFA dari Alea Hotel Seminyak</span></td><td class="transport"><span class="editable" contenteditable="true">–</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1229')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1229" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1229')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 15: Rabu, 30 Des 2026 -->
-            <details class="day">
-            <summary>Rabu, 30 Des 2026 <span class="tag">-</span></summary>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1230">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1230">
-              <tr><td class="time"><span class="editable" contenteditable="true">9.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">WFA dari Alea Hotel Seminyak</span></td><td class="transport"><span class="editable" contenteditable="true">–</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1230')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1230" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1230')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 16: Kamis, 31 Des 2026 -->
-            <details class="day">
-            <summary>Kamis, 31 Des 2026 <span class="tag">-</span></summary>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d1231">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d1231">
-              <tr><td class="time"><span class="editable" contenteditable="true">9.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">WFA & Perayaan Malam Tahun Baru</span></td><td class="transport"><span class="editable" contenteditable="true">Jalan kaki</span></td><td class="price"><span class="editable" contenteditable="true">Gratis</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1231')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1231" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d1231')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 17: Jumat, 1 Jan 2027 -->
-            <details class="day">
-            <summary>Jumat, 1 Jan 2027 <span class="tag">-</span></summary>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d0101">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d0101">
-              <tr><td class="time"><span class="editable" contenteditable="true">10.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">Sarapan santai awal tahun</span></td><td class="transport"><span class="editable" contenteditable="true">Jalan kaki</span></td><td class="price"><span class="editable" contenteditable="true">Rp25rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd0101')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d0101" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d0101')">+ Tambah Baris</button>
-            </details>
-
-            <!-- HARI 18: Sabtu, 2 Jan 2027 -->
-            <details class="day">
-            <summary>Sabtu, 2 Jan 2027 <span class="tag">-</span></summary>
-            <div class="table-responsive">
-              <table class="itinerary-table" data-day="d0102">
-              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
-              <tbody id="tbody-d0102">
-              <tr><td class="time"><span class="editable" contenteditable="true">12.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">Check out Alea Hotel & ke Bandara</span></td><td class="transport"><span class="editable" contenteditable="true">Gojek/Grab</span></td><td class="price"><span class="editable" contenteditable="true">Rp100rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd0102')">×</button></td></tr>
-              </tbody>
-              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d0102" class="total-value">Rp0</td><td></td></tr></tfoot>
-              </table>
-            </div>
-            <button class="add-row" onclick="addRow('d0102')">+ Tambah Baris</button>
             </details>
 
           </main>
@@ -853,7 +587,6 @@
         </div>
       </div>
 
-      <!-- ACCOMMODATION & TRANSPORT TAB -->
       <div id="view-accommodation-transport" class="tab-content" style="display: none;">
         <div class="top-bar">
           <div class="page-title">
@@ -861,38 +594,12 @@
             <p>Kelola rincian akomodasi, kendaraan, dan total anggaran</p>
           </div>
         </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px;">
-          <div class="overview-card" style="margin-bottom:0;">
-            <div class="overview-info">
-              <span>Total Akomodasi</span>
-              <h3 id="total-acc-value">Rp0</h3>
-            </div>
-            <div class="overview-badge">Hotel / Penginapan</div>
-          </div>
-          <div class="overview-card" style="margin-bottom:0;">
-            <div class="overview-info">
-              <span>Total Transportasi</span>
-              <h3 id="total-trans-value">Rp0</h3>
-            </div>
-            <div class="overview-badge" style="background:#eaf2f8; color:#2980b9;">Kendaraan</div>
-          </div>
-        </div>
-
         <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px;">
           <div class="table-responsive">
             <table id="acc-trans-table" style="width: 100%; border-collapse: collapse; font-size: 13px; min-width: 950px;">
               <thead>
                 <tr>
-                  <th style="padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted);">Kategori</th>
-                  <th style="padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted);">Jenis</th>
-                  <th style="padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted);">Nama / Layanan</th>
-                  <th style="padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted);">Check-In / Mulai</th>
-                  <th style="padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted);">Check-Out / Selesai</th>
-                  <th style="padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted);">Durasi</th>
-                  <th style="padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted);">Harga / Satuan</th>
-                  <th style="padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted);">Total Harga (Rp)</th>
-                  <th style="padding:10px 12px; border-bottom:1px solid var(--border-color); text-align:center;">Aksi</th>
+                  <th>Kategori</th><th>Jenis</th><th>Nama / Layanan</th><th>Check-In / Mulai</th><th>Check-Out / Selesai</th><th>Durasi</th><th>Harga / Satuan</th><th>Total Harga (Rp)</th><th style="text-align:center;">Aksi</th>
                 </tr>
               </thead>
               <tbody id="acc-trans-tbody">
@@ -914,7 +621,6 @@
         </div>
       </div>
 
-      <!-- LOCATIONS TAB -->
       <div id="view-locations" class="tab-content" style="display: none;">
         <div class="top-bar">
           <div class="page-title">
@@ -925,7 +631,6 @@
         <div id="locations-container"></div>
       </div>
 
-      <!-- CONTACTS TAB -->
       <div id="view-contacts" class="tab-content" style="display: none;">
         <div class="top-bar">
           <div class="page-title">
@@ -936,22 +641,13 @@
             <button onclick="addContactCard()">+ Kategori Baru</button>
           </div>
         </div>
-
         <div id="contacts-container">
           <details class="contact-section-card" open>
             <summary>Hotel</summary>
             <div class="contact-body-padding">
               <div class="table-responsive">
-                <table style="width:100%; border-collapse:collapse; font-size:13px; min-width: 600px;">
-                  <thead>
-                    <tr>
-                      <th style="text-align:left; padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted); font-size:11px;">Nama Tempat</th>
-                      <th style="text-align:left; padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted); font-size:11px;">No. Telepon</th>
-                      <th style="text-align:left; padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted); font-size:11px;">Link Google Maps</th>
-                      <th style="text-align:left; padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted); font-size:11px;">Kecamatan/Kabupaten</th>
-                      <th style="text-align:center; padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted); font-size:11px;">Aksi</th>
-                    </tr>
-                  </thead>
+                <table>
+                  <thead><tr><th>Nama Tempat</th><th>No. Telepon</th><th>Link Google Maps</th><th>Kecamatan/Kabupaten</th><th style="text-align:center;">Aksi</th></tr></thead>
                   <tbody class="contact-tbody">
                     <tr>
                       <td><span class="editable" contenteditable="true">Narayuka House</span></td>
@@ -978,6 +674,9 @@ const CLOUD_API_URL = "https://api.npoint.io/25de8dcc0d3bfc177618";
 
 async function saveAllData() {
   if (document.body.classList.contains('view-only')) return;
+  const statusEl = document.getElementById('sync-status');
+  if(statusEl) { statusEl.textContent = "Menyimpan..."; statusEl.style.color = "#d94e3d"; }
+
   const data = {
     itineraryHTML: document.getElementById('itinerary-main-container').innerHTML,
     locationMaps: locationMaps,
@@ -991,14 +690,19 @@ async function saveAllData() {
       body: JSON.stringify(data)
     });
     if (response.ok) {
-      console.log("Perubahan berhasil disimpan ke cloud!");
+      if(statusEl) { statusEl.textContent = "Tersimpan ✓"; statusEl.style.color = "var(--accent-green)"; }
+    } else {
+      if(statusEl) { statusEl.textContent = "Gagal Simpan ✕"; statusEl.style.color = "#d94e3d"; }
     }
   } catch (error) {
-    console.error("Gagal menyimpan ke cloud:", error);
+    if(statusEl) { statusEl.textContent = "Error Jaringan"; statusEl.style.color = "#d94e3d"; }
   }
 }
 
 async function loadSavedData() {
+  // Jangan tarik data dari cloud jika user sedang mengetik aktif di dalam input/editable agar tidak mereset kursor
+  if (document.activeElement && document.activeElement.classList.contains('editable')) return;
+
   try {
     let response = await fetch(CLOUD_API_URL);
     if (response.ok) {
@@ -1006,6 +710,7 @@ async function loadSavedData() {
       if (data) {
         if (data.itineraryHTML && document.getElementById('itinerary-main-container').innerHTML !== data.itineraryHTML) {
           document.getElementById('itinerary-main-container').innerHTML = data.itineraryHTML;
+          recalcAll();
         }
         if (data.locationMaps) locationMaps = data.locationMaps;
         if (data.contactsHTML && document.getElementById('contacts-container').innerHTML !== data.contactsHTML) {
@@ -1013,6 +718,7 @@ async function loadSavedData() {
         }
         if (data.accTransHTML && document.getElementById('acc-trans-tbody').innerHTML !== data.accTransHTML) {
           document.getElementById('acc-trans-tbody').innerHTML = data.accTransHTML;
+          recalcAccTransTotals();
         }
       }
     }
@@ -1021,10 +727,10 @@ async function loadSavedData() {
   }
 }
 
+// Auto-sync berkala setiap 5 detik untuk SEMUA browser (baik Editor maupun Viewer)
 setInterval(() => {
-  if (document.body.classList.contains('view-only') && document.getElementById('main-wrapper').style.display === 'block') {
+  if (document.getElementById('main-wrapper').style.display === 'block') {
     loadSavedData();
-    recalcAll();
   }
 }, 5000);
 
@@ -1294,16 +1000,8 @@ function addContactCard() {
     <summary><span>${categoryName}</span><button onclick="this.closest('details').remove(); saveAllData(); event.stopPropagation();" style="background:none; border:none; color:#b5af9f; cursor:pointer; font-size:16px;">×</button></summary>
     <div class="contact-body-padding">
       <div class="table-responsive">
-        <table style="width:100%; border-collapse:collapse; font-size:13px; min-width: 600px;">
-          <thead>
-            <tr>
-              <th style="text-align:left; padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted); font-size:11px;">Nama Tempat</th>
-              <th style="text-align:left; padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted); font-size:11px;">No. Telepon</th>
-              <th style="text-align:left; padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted); font-size:11px;">Link Google Maps</th>
-              <th style="text-align:left; padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted); font-size:11px;">Kecamatan/Kabupaten</th>
-              <th style="text-align:center; padding:10px 12px; border-bottom:1px solid var(--border-color); color:var(--text-muted); font-size:11px;">Aksi</th>
-            </tr>
-          </thead>
+        <table>
+          <thead><tr><th>Nama Tempat</th><th>No. Telepon</th><th>Link Google Maps</th><th>Kecamatan/Kabupaten</th><th style="text-align:center;">Aksi</th></tr></thead>
           <tbody class="contact-tbody">
             <tr>
               <td><span class="editable" contenteditable="true">Contoh Tempat</span></td>
