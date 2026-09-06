@@ -2,7 +2,6 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<!-- Diperbarui agar mendukung zoom in dan zoom out di HP -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <title>Itinerary Bali — WFA Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +34,6 @@
     line-height: 1.5;
   }
   
-  /* OVERLAY PASSWORD */
   #auth-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -83,13 +81,11 @@
 
   #main-wrapper { display: none; min-height: 100vh; }
 
-  /* DASHBOARD LAYOUT */
   .dashboard-container {
     display: flex;
     min-height: 100vh;
   }
 
-  /* SIDEBAR DESKTOP */
   aside {
     width: 260px;
     background: var(--sidebar-bg);
@@ -951,7 +947,23 @@ async function loadSavedData() {
       const data = await response.json();
       if (data) {
         if (data.itineraryHTML && document.getElementById('itinerary-main-container').innerHTML !== data.itineraryHTML) {
+          // Simpan status detail hari mana saja yang sedang terbuka sebelum diperbarui
+          let openIndices = [];
+          document.querySelectorAll('#itinerary-main-container details.day').forEach((d, idx) => {
+            if (d.open) openIndices.push(idx);
+          });
+
           document.getElementById('itinerary-main-container').innerHTML = data.itineraryHTML;
+
+          // Pulihkan kembali status terbuka/tertutup dari setiap kartu hari
+          document.querySelectorAll('#itinerary-main-container details.day').forEach((d, idx) => {
+            if (openIndices.includes(idx)) {
+              d.setAttribute('open', 'true');
+            } else {
+              d.removeAttribute('open');
+            }
+          });
+
           recalcAll();
         }
         if (data.locationMaps) locationMaps = data.locationMaps;
