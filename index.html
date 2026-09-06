@@ -852,9 +852,20 @@
                   <td><span class="editable" contenteditable="true">Narayuka House</span></td>
                   <td><input type="date" class="acc-trans-date" value="2026-12-16"></td>
                   <td><input type="date" class="acc-trans-date" value="2026-12-23"></td>
-                  <td><span class="editable" contenteditable="true">7 Hari</span></td>
+                  <td><span class="editable duration-text" contenteditable="true">8 Hari / 7 Malam</span></td>
                   <td><span class="editable unit-price" contenteditable="true">Rp350.000</span></td>
                   <td><span class="editable total-price" contenteditable="true">Rp2.450.000</span></td>
+                  <td style="text-align:center;"><button class="del-row" onclick="deleteAccTransRow(this)">×</button></td>
+                </tr>
+                <tr>
+                  <td><select class="acc-trans-select cat-select" onchange="onCategoryChange(this)"><option value="Akomodasi" selected>Akomodasi</option><option value="Transportasi" selected>Transportasi</option></select></td>
+                  <td><select class="acc-trans-select type-select"><option value="Motor Sewa" selected>Motor Sewa</option></select></td>
+                  <td><span class="editable" contenteditable="true">Alea Hotel seminyak</span></td>
+                  <td><input type="date" class="acc-trans-date" value="2026-12-23"></td>
+                  <td><input type="date" class="acc-trans-date" value="2027-01-02"></td>
+                  <td><span class="editable duration-text" contenteditable="true">10 Hari</span></td>
+                  <td><span class="editable unit-price" contenteditable="true">Rp0</span></td>
+                  <td><span class="editable total-price" contenteditable="true">Rp0</span></td>
                   <td style="text-align:center;"><button class="del-row" onclick="deleteAccTransRow(this)">×</button></td>
                 </tr>
               </tbody>
@@ -943,17 +954,14 @@ async function saveAllData() {
 }
 
 async function loadSavedData() {
-  // Jangan ganti isi jika kursor sedang aktif di kolom input/edit
   if (document.activeElement && document.activeElement.classList.contains('editable')) return;
 
   try {
-    // Tambahkan timestamp untuk menghindari cache server
     let response = await fetch(CLOUD_API_URL + "?t=" + new Date().getTime());
     if (response.ok) {
       const data = await response.json();
       if (data) {
         if (data.itineraryHTML && document.getElementById('itinerary-main-container').innerHTML !== data.itineraryHTML) {
-          // Rekam status terbuka/tertutup dari setiap kartu sebelum direfresh
           let openIndices = [];
           document.querySelectorAll('#itinerary-main-container details.day').forEach((d, idx) => {
             if (d.open) openIndices.push(idx);
@@ -961,7 +969,6 @@ async function loadSavedData() {
 
           document.getElementById('itinerary-main-container').innerHTML = data.itineraryHTML;
 
-          // Kembalikan status terbuka/tertutup
           document.querySelectorAll('#itinerary-main-container details.day').forEach((d, idx) => {
             if (openIndices.includes(idx)) {
               d.setAttribute('open', 'true');
@@ -987,7 +994,6 @@ async function loadSavedData() {
   }
 }
 
-// Polling otomatis setiap 5 detik
 setInterval(() => {
   if (document.getElementById('main-wrapper').style.display === 'block') {
     loadSavedData();
@@ -1063,8 +1069,51 @@ function onCategoryChange(selectEl) {
     optionEl.textContent = opt;
     typeSelect.appendChild(optionEl);
   });
+  updateDuration(tr);
   recalcAccTransTotals();
   saveAllData();
+}
+
+function updateDuration(tr) {
+  const catSelect = tr.querySelector('.cat-select');
+  const dateInputs = tr.querySelectorAll('.acc-trans-date');
+  const durationEl = tr.querySelector('.duration-text');
+  
+  if (!catSelect || dateInputs.length < 2 || !durationEl) return;
+  
+  const startVal = dateInputs[0].value;
+  const endVal = dateInputs[1].value;
+  
+  if (!startVal || !endVal) return;
+  
+  const start = new Date(startVal);
+  const end = new Date(endVal);
+  
+  const diffTime = end - start;
+  let diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+  if (diffDays < 0) diffDays = 0;
+  
+  const cat = catSelect.value;
+  let durationStr = '';
+  
+  if (cat === 'Akomodasi') {
+    let nights = diffDays;
+    let days = diffDays + 1;
+    if (nights <= 0) {
+      durationStr = '1 Hari';
+    } else {
+      durationStr = `${days} Hari / ${nights} Malam`;
+    }
+  } else {
+    // Transportasi (seperti Motor Sewa, Mobil Sewa, dll)
+    if (diffDays <= 0) {
+      durationStr = '1 Hari';
+    } else {
+      durationStr = `${diffDays} Hari`;
+    }
+  }
+  
+  durationEl.textContent = durationStr;
 }
 
 function addAccTransRow() {
@@ -1072,18 +1121,20 @@ function addAccTransRow() {
   const tbody = document.getElementById('acc-trans-tbody');
   const tr = document.createElement('tr');
   let accOpts = accTypes.map(o => `<option value="${o}">${o}</option>`).join('');
+  let today = new Date().toISOString().split('T')[0];
   tr.innerHTML = `
     <td><select class="acc-trans-select cat-select" onchange="onCategoryChange(this)"><option value="Akomodasi" selected>Akomodasi</option><option value="Transportasi">Transportasi</option></select></td>
     <td><select class="acc-trans-select type-select">${accOpts}</select></td>
     <td><span class="editable" contenteditable="true">Nama Tempat</span></td>
-    <td><input type="date" class="acc-trans-date"></td>
-    <td><input type="date" class="acc-trans-date"></td>
-    <td><span class="editable" contenteditable="true">1 Hari</span></td>
+    <td><input type="date" class="acc-trans-date" value="${today}"></td>
+    <td><input type="date" class="acc-trans-date" value="${today}"></td>
+    <td><span class="editable duration-text" contenteditable="true">1 Hari</span></td>
     <td><span class="editable unit-price" contenteditable="true">Rp0</span></td>
     <td><span class="editable total-price" contenteditable="true">Rp0</span></td>
     <td style="text-align:center;"><button class="del-row" onclick="deleteAccTransRow(this)">×</button></td>
   `;
   tbody.appendChild(tr);
+  updateDuration(tr);
   recalcAccTransTotals();
   saveAllData();
 }
@@ -1098,6 +1149,7 @@ function deleteAccTransRow(btn) {
 function recalcAccTransTotals() {
   let totalAcc = 0, totalTrans = 0;
   document.querySelectorAll('#acc-trans-tbody tr').forEach(tr => {
+    updateDuration(tr);
     const cat = tr.querySelector('.cat-select').value;
     const totalEl = tr.querySelector('.total-price');
     if (totalEl) {
@@ -1337,13 +1389,22 @@ document.addEventListener('input', function(e){
   if(e.target.classList.contains('editable') || e.target.classList.contains('acc-trans-date') || e.target.classList.contains('acc-trans-select') || e.target.classList.contains('loc-map-input')){
     const table = e.target.closest('table.itinerary-table');
     if(table) recalcTotal(table.dataset.day);
-    if(e.target.closest('#acc-trans-table')) recalcAccTransTotals();
+    if(e.target.closest('#acc-trans-table')) {
+      const tr = e.target.closest('tr');
+      if (tr) updateDuration(tr);
+      recalcAccTransTotals();
+    }
     saveAllData();
   }
 });
 
 document.addEventListener('change', function(e){
-  if(e.target.classList.contains('acc-trans-date') || e.target.classList.contains('acc-trans-select')) saveAllData();
+  if(e.target.classList.contains('acc-trans-date') || e.target.classList.contains('acc-trans-select')){
+    const tr = e.target.closest('tr');
+    if (tr) updateDuration(tr);
+    recalcAccTransTotals();
+    saveAllData();
+  }
 });
 
 document.addEventListener('blur', function(e){
