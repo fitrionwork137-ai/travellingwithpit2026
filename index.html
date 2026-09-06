@@ -2,7 +2,8 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Diperbarui agar mendukung zoom in dan zoom out di HP -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <title>Itinerary Bali — WFA Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -549,6 +550,7 @@
         <div id="export-area">
           <main id="itinerary-main-container">
             
+            <!-- HARI 1 -->
             <details class="day" open>
             <summary>Rabu, 16 Des 2026 <span class="tag">-</span></summary>
             <div class="table-responsive">
@@ -565,6 +567,7 @@
             <button class="add-row" onclick="addRow('d1216')">+ Tambah Baris</button>
             </details>
 
+            <!-- HARI 2 -->
             <details class="day">
             <summary>Kamis, 17 Des 2026 <span class="tag">-</span></summary>
             <div class="table-responsive">
@@ -577,6 +580,246 @@
               </table>
             </div>
             <button class="add-row" onclick="addRow('d1217')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 3 -->
+            <details class="day">
+            <summary>Jumat, 18 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1218">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1218">
+              <tr><td class="time"><span class="editable" contenteditable="true">08.00–12.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta Utara</span></td><td class="location"><span class="editable" contenteditable="true">Canggu</span></td><td class="activity"><span class="editable" contenteditable="true">Analog Canggu</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Harga menu cafe</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1218')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1218" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1218')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 4 -->
+            <details class="day">
+            <summary>Sabtu, 19 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1219">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1219">
+              <tr><td class="time"><span class="editable" contenteditable="true">08.00–09.00</span></td><td class="region"><span class="editable" contenteditable="true">Sukawati</span></td><td class="location"><span class="editable" contenteditable="true">Gianyar</span></td><td class="activity"><span class="editable" contenteditable="true">Tegenungan Waterfall</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Rp35rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1219')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1219" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1219')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 5 -->
+            <details class="day">
+            <summary>Minggu, 20 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1220">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1220">
+              <tr><td class="time"><span class="editable" contenteditable="true">09.30–12.00</span></td><td class="region"><span class="editable" contenteditable="true">Penebel</span></td><td class="location"><span class="editable" contenteditable="true">Tabanan</span></td><td class="activity"><span class="editable" contenteditable="true">Jatiluwih Rice Terraces</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Rp40rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1220')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1220" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1220')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 6 -->
+            <details class="day">
+            <summary>Senin, 21 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1221">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1221">
+              <tr><td class="time"><span class="editable" contenteditable="true">09.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">WFA dari Narayuka House</span></td><td class="transport"><span class="editable" contenteditable="true">-</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1221')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1221" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1221')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 7 -->
+            <details class="day">
+            <summary>Selasa, 22 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1222">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1222">
+              <tr><td class="time"><span class="editable" contenteditable="true">09.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">WFA dari Narayuka House</span></td><td class="transport"><span class="editable" contenteditable="true">-</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1222')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1222" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1222')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 8 -->
+            <details class="day">
+            <summary>Rabu, 23 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1223">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1223">
+              <tr><td class="time"><span class="editable" contenteditable="true">12.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">Pindah ke Alea Hotel Seminyak</span></td><td class="transport"><span class="editable" contenteditable="true">Motor</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1223')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1223" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1223')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 9 -->
+            <details class="day">
+            <summary>Kamis, 24 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1224">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1224">
+              <tr><td class="time"><span class="editable" contenteditable="true">09.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">WFA dari Alea Hotel</span></td><td class="transport"><span class="editable" contenteditable="true">-</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1224')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1224" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1224')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 10 -->
+            <details class="day">
+            <summary>Jumat, 25 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1225">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1225">
+              <tr><td class="time"><span class="editable" contenteditable="true">11.15–14.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta Selatan</span></td><td class="location"><span class="editable" contenteditable="true">Uluwatu</span></td><td class="activity"><span class="editable" contenteditable="true">Melasti Beach</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Rp15rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1225')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1225" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1225')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 11 -->
+            <details class="day">
+            <summary>Sabtu, 26 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1226">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1226">
+              <tr><td class="time"><span class="editable" contenteditable="true">09.30–11.00</span></td><td class="region"><span class="editable" contenteditable="true">Gianyar</span></td><td class="location"><span class="editable" contenteditable="true">Bangli</span></td><td class="activity"><span class="editable" contenteditable="true">Goa Rang Reng</span></td><td class="transport"><span class="editable" contenteditable="true">Motor sewa</span></td><td class="price"><span class="editable" contenteditable="true">Rp20rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1226')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1226" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1226')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 12 -->
+            <details class="day">
+            <summary>Minggu, 27 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1227">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1227">
+              <tr><td class="time"><span class="editable" contenteditable="true">08.15–09.30</span></td><td class="region"><span class="editable" contenteditable="true">Ubud</span></td><td class="location"><span class="editable" contenteditable="true">Ubud</span></td><td class="activity"><span class="editable" contenteditable="true">Campuhan Ridge Walk</span></td><td class="transport"><span class="editable" contenteditable="true">Jalan kaki</span></td><td class="price"><span class="editable" contenteditable="true">Gratis</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1227')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1227" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1227')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 13 -->
+            <details class="day">
+            <summary>Senin, 28 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1228">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1228">
+              <tr><td class="time"><span class="editable" contenteditable="true">09.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">WFA dari Alea Hotel</span></td><td class="transport"><span class="editable" contenteditable="true">-</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1228')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1228" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1228')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 14 -->
+            <details class="day">
+            <summary>Selasa, 29 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1229">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1229">
+              <tr><td class="time"><span class="editable" contenteditable="true">09.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">WFA dari Alea Hotel</span></td><td class="transport"><span class="editable" contenteditable="true">-</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1229')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1229" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1229')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 15 -->
+            <details class="day">
+            <summary>Rabu, 30 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1230">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1230">
+              <tr><td class="time"><span class="editable" contenteditable="true">09.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">WFA dari Alea Hotel</span></td><td class="transport"><span class="editable" contenteditable="true">-</span></td><td class="price"><span class="editable" contenteditable="true">Rp0</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1230')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1230" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1230')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 16 -->
+            <details class="day">
+            <summary>Kamis, 31 Des 2026 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d1231">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d1231">
+              <tr><td class="time"><span class="editable" contenteditable="true">09.00–17.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">Malam Tahun Baru</span></td><td class="transport"><span class="editable" contenteditable="true">Jalan kaki</span></td><td class="price"><span class="editable" contenteditable="true">Gratis</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd1231')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d1231" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d1231')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 17 -->
+            <details class="day">
+            <summary>Jumat, 1 Jan 2027 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d0101">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d0101">
+              <tr><td class="time"><span class="editable" contenteditable="true">10.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">Sarapan santai</span></td><td class="transport"><span class="editable" contenteditable="true">Jalan kaki</span></td><td class="price"><span class="editable" contenteditable="true">Rp25rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd0101')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d0101" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d0101')">+ Tambah Baris</button>
+            </details>
+
+            <!-- HARI 18 -->
+            <details class="day">
+            <summary>Sabtu, 2 Jan 2027 <span class="tag">-</span></summary>
+            <div class="table-responsive">
+              <table class="itinerary-table" data-day="d0102">
+              <thead><tr><th>Waktu</th><th>Kab/Kec</th><th>Lokasi</th><th>Aktivitas</th><th>Transportasi</th><th>Estimasi Biaya</th><th></th></tr></thead>
+              <tbody id="tbody-d0102">
+              <tr><td class="time"><span class="editable" contenteditable="true">12.00</span></td><td class="region"><span class="editable" contenteditable="true">Kuta</span></td><td class="location"><span class="editable" contenteditable="true">Seminyak</span></td><td class="activity"><span class="editable" contenteditable="true">Check out & ke Bandara</span></td><td class="transport"><span class="editable" contenteditable="true">Gojek/Grab</span></td><td class="price"><span class="editable" contenteditable="true">Rp100rb</span></td><td class="rowaction"><button class="del-row" onclick="deleteRow(this, 'd0102')">×</button></td></tr>
+              </tbody>
+              <tfoot><tr class="total-row"><td colspan="5">Total biaya hari ini</td><td id="total-d0102" class="total-value">Rp0</td><td></td></tr></tfoot>
+              </table>
+            </div>
+            <button class="add-row" onclick="addRow('d0102')">+ Tambah Baris</button>
             </details>
 
           </main>
@@ -700,7 +943,6 @@ async function saveAllData() {
 }
 
 async function loadSavedData() {
-  // Jangan tarik data dari cloud jika user sedang mengetik aktif di dalam input/editable agar tidak mereset kursor
   if (document.activeElement && document.activeElement.classList.contains('editable')) return;
 
   try {
@@ -727,7 +969,6 @@ async function loadSavedData() {
   }
 }
 
-// Auto-sync berkala setiap 5 detik untuk SEMUA browser (baik Editor maupun Viewer)
 setInterval(() => {
   if (document.getElementById('main-wrapper').style.display === 'block') {
     loadSavedData();
