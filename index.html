@@ -837,6 +837,25 @@
             <p>Kelola rincian akomodasi, kendaraan, dan total anggaran</p>
           </div>
         </div>
+
+        <!-- KARTU RINGKASAN TOTAL AKOMODASI & TRANSPORTASI -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px;">
+          <div class="overview-card" style="margin-bottom: 0;">
+            <div class="overview-info">
+              <span>Total Akomodasi</span>
+              <h3 id="total-acc-value">Rp0</h3>
+            </div>
+            <div class="overview-badge">Hotel / Villa / Homestay</div>
+          </div>
+          <div class="overview-card" style="margin-bottom: 0;">
+            <div class="overview-info">
+              <span>Total Transportasi</span>
+              <h3 id="total-trans-value">Rp0</h3>
+            </div>
+            <div class="overview-badge">Motor / Sewa / Kendaraan</div>
+          </div>
+        </div>
+
         <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px;">
           <div class="table-responsive">
             <table id="acc-trans-table" style="width: 100%; border-collapse: collapse; font-size: 13px; min-width: 950px;">
@@ -858,7 +877,7 @@
                   <td style="text-align:center;"><button class="del-row" onclick="deleteAccTransRow(this)">×</button></td>
                 </tr>
                 <tr>
-                  <td><select class="acc-trans-select cat-select" onchange="onCategoryChange(this)"><option value="Akomodasi" selected>Akomodasi</option><option value="Transportasi" selected>Transportasi</option></select></td>
+                  <td><select class="acc-trans-select cat-select" onchange="onCategoryChange(this)"><option value="Akomodasi">Akomodasi</option><option value="Transportasi" selected>Transportasi</option></select></td>
                   <td><select class="acc-trans-select type-select"><option value="Motor Sewa" selected>Motor Sewa</option></select></td>
                   <td><span class="editable" contenteditable="true">Alea Hotel seminyak</span></td>
                   <td><input type="date" class="acc-trans-date" value="2026-12-23"></td>
@@ -1105,7 +1124,6 @@ function updateDuration(tr) {
       durationStr = `${days} Hari / ${nights} Malam`;
     }
   } else {
-    // Transportasi (seperti Motor Sewa, Mobil Sewa, dll)
     if (diffDays <= 0) {
       durationStr = '1 Hari';
     } else {
@@ -1158,8 +1176,10 @@ function recalcAccTransTotals() {
       else totalTrans += val;
     }
   });
-  document.getElementById('total-acc-value').textContent = formatRupiah(totalAcc);
-  document.getElementById('total-trans-value').textContent = formatRupiah(totalTrans);
+  let accValEl = document.getElementById('total-acc-value');
+  let transValEl = document.getElementById('total-trans-value');
+  if(accValEl) accValEl.textContent = formatRupiah(totalAcc);
+  if(transValEl) transValEl.textContent = formatRupiah(totalTrans);
 }
 
 function sortTable(dayId) {
@@ -1361,7 +1381,8 @@ function updateGrandTotal() {
   document.querySelectorAll('td.price .editable').forEach(el => {
     grandTotal += parsePrice(el.textContent);
   });
-  document.getElementById('grand-total-value').textContent = formatRupiah(grandTotal);
+  let grandEl = document.getElementById('grand-total-value');
+  if(grandEl) grandEl.textContent = formatRupiah(grandTotal);
 }
 
 function recalcTotal(dayId){
